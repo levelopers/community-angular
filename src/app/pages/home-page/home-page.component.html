@@ -1,0 +1,6 @@
+
+<header></header>
+
+<ng-container *ngFor="let question of quesionts$ | async">
+ <div> {{question | json}}</div>
+</ng-container>
