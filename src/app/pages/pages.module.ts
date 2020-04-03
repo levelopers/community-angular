@@ -5,6 +5,7 @@ import {SharedModule} from "../shared/shared.module";
 import { LoginPageComponent } from './login-page/login-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -18,7 +19,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    RouterModule
   ],
   exports: [
     HomePageComponent,

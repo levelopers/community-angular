@@ -1,3 +1,5 @@
+import {User} from "./User";
+
 export class Question {
   id: number;
   title: string;
@@ -9,4 +11,5 @@ export class Question {
   gmtModified: number;
   likeCount: number;
   viewCount: number;
+  user: User;
 }

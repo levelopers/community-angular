@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
 import {rootUrl} from "../../configs/api-config";
-import {APIResponse} from "../models/response";
+import {APIResponse} from "../models/APIResponse";
 
 @Injectable({
   providedIn: 'root'

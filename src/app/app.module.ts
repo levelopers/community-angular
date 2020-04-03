@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {SharedModule} from "./shared/shared.module";
 import {PagesModule} from "./pages/pages.module";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
@@ -12,8 +12,8 @@ import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {ErrorInterceptor} from "./interceptors/error-interceptor.service";
 
 const appRoutes: Routes = [
-  { path: '', component: HomePageComponent },
-  { path: 'login',      component:  LoginPageComponent},
+  {path: '', component: HomePageComponent},
+  {path: 'login', component: LoginPageComponent},
 ];
 
 @NgModule({
@@ -27,7 +27,8 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     SharedModule,
-    PagesModule
+    PagesModule,
+    RouterModule
   ],
   providers: [
     [{
@@ -35,12 +36,13 @@ const appRoutes: Routes = [
       useClass: JwtInterceptor,
       multi: true
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true
-    }]
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: ErrorInterceptor,
+        multi: true
+      }]
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
