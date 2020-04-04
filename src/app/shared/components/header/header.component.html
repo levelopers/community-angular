@@ -1,1 +1,45 @@
-<p>header works!</p>
+<div>
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <!--      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>-->
+      <!--        <mat-icon>menu</mat-icon>-->
+      <!--      </button>-->
+      <button mat-button>Community</button>
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-sm>
+<!--        TODO add router-->
+        <button mat-raised-button class="mx-1"><span class="far fa-edit"></span>New Question</button>
+        <button mat-button class="mx-1" [matMenuTriggerFor]="menu">
+          <span class="fas fa-user">
+            <span class="mx-1">{{currentUser.username || ""}}</span>
+            <i class="fas fa-caret-down"></i>
+          </span>
+        </button>
+        <mat-menu #menu="matMenu">
+          <!--          TODO add router-->
+          <button mat-menu-item><span class="fas fa-cog"><span class="mx-1">Settings</span></span></button>
+          <button mat-menu-item><span class="fas fa-newspaper"><span class="mx-1"> My posts</span></span></button>
+        </mat-menu>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <!--  <mat-sidenav-container fxFlexFill class="side-nav" >-->
+
+  <!--    <mat-sidenav mode="over" #sidenav [fixedInViewport]="true">-->
+  <!--      <mat-nav-list>-->
+  <!--        <a (click)="sidenav.toggle()"  mat-list-item>Close</a>-->
+  <!--        <a href="#" mat-list-item>Menu Item 1</a>-->
+  <!--        <a href="#" mat-list-item>Menu Item 2</a>-->
+  <!--        <a href="#" mat-list-item>Menu Item 3</a>-->
+  <!--        <a href="#" mat-list-item>Menu Item 4</a>-->
+  <!--        <a href="#" mat-list-item>Menu Item 5</a>-->
+  <!--        <a href="#"mat-list-item>Menu Item 6</a>-->
+  <!--      </mat-nav-list>-->
+  <!--    </mat-sidenav>-->
+  <!--    <mat-sidenav-content>-->
+  <!--    </mat-sidenav-content>-->
+  <!--  </mat-sidenav-container>-->
+
+</div>

@@ -10,6 +10,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {LoginPageComponent} from "./pages/login-page/login-page.component";
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {ErrorInterceptor} from "./interceptors/error-interceptor.service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent},
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     BrowserModule,
     SharedModule,
     PagesModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule
   ],
   providers: [
     [{
