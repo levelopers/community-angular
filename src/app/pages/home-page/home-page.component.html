@@ -1,10 +1,10 @@
 <header></header>
-<div class="container-fluid main">
+<div class="container-fluid home-container">
   <div class="row">
     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
       <ng-container *ngFor="let question of quesionts$ | async">
         <div class="card my-3">
-          <div class="card-header d-flex">
+          <div class="card-header question-header">
             <a class="question-user">
               <img [src]="question.user.avatarUrl" class="question-user-img"/>
             </a>
@@ -13,7 +13,7 @@
                 {{ question.user.username }}
               </a>
               <span class="date-posted">
-              {{ question.gmtCreate | date: 'longDate' }}
+              {{ question.gmtCreate | date }}
             </span>
             </div>
           </div>
@@ -30,10 +30,9 @@
             <!--                     (click)="deleteClicked()"-->
             <!--            ></i>-->
           </div>
-          <div class="card-footer">
+          <div class="card-footer question-footer">
             <span><span>{{question.commentCount}}</span> replies • </span>
-            <span><span>{{question.viewCount}}</span> views • </span>
-            <span>{{question.gmtCreate | date}}</span>
+            <span><span>{{question.viewCount}}</span> views </span>
           </div>
         </div>
       </ng-container>
