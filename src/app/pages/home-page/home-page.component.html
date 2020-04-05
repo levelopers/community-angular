@@ -1,41 +1,49 @@
-<header></header>
-<div class="container-fluid home-container">
-  <div class="row">
-    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-      <ng-container *ngFor="let question of quesionts$ | async">
-        <div class="card my-3">
-          <div class="card-header question-header">
-            <a class="question-user">
-              <img [src]="question.user.avatarUrl" class="question-user-img"/>
-            </a>
-            <div class="d-flex flex-column ml-2">
-              <a class="comment-author text-primary">
-                {{ question.user.username }}
-              </a>
-              <span class="date-posted">
+<div class="page-container">
+  <header></header>
+  <div class="main-content">
+    <h2 class="px-3 pt-3">
+      <span><i class="fas fa-comment mr-1"></i>Questions</span>
+    </h2>
+    <mat-divider></mat-divider>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+          <ng-container *ngFor="let question of quesionts$ | async">
+            <div class="card my-3">
+              <div class="card-header question-header">
+                <a class="question-user">
+                  <img [src]="question.user.avatarUrl" class="question-user-img"/>
+                </a>
+                <div class="d-flex flex-column ml-2">
+                  <a class="comment-author text-primary">
+                    {{ question.user.username }}
+                  </a>
+                  <span class="date-posted">
               {{ question.gmtCreate | date }}
             </span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-text">
+                  <a routerLink="/questions/{{question.id}}">
+                    {{question.title}}
+                  </a>
+                </h3>
+                <p class="card-text">
+                  {{ question.description }}
+                </p>
+                <!--            <i class="fas fa-trash-alt"-->
+                <!--                     (click)="deleteClicked()"-->
+                <!--            ></i>-->
+              </div>
+              <div class="card-footer question-footer">
+                <span><span>{{question.commentCount}}</span> replies • </span>
+                <span><span>{{question.viewCount}}</span> views </span>
+              </div>
             </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-text">
-              <a routerLink="/questions/{{question.id}}">
-                {{question.title}}
-              </a>
-            </h3>
-            <p class="card-text">
-              {{ question.description }}
-            </p>
-            <!--            <i class="fas fa-trash-alt"-->
-            <!--                     (click)="deleteClicked()"-->
-            <!--            ></i>-->
-          </div>
-          <div class="card-footer question-footer">
-            <span><span>{{question.commentCount}}</span> replies • </span>
-            <span><span>{{question.viewCount}}</span> views </span>
-          </div>
+          </ng-container>
         </div>
-      </ng-container>
+      </div>
     </div>
   </div>
 </div>

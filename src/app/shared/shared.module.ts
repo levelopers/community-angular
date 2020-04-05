@@ -9,6 +9,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -25,7 +26,8 @@ import {MatMenuModule} from "@angular/material/menu";
     MatSidenavModule,
     FlexLayoutModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    RouterModule
   ],
   exports: [
     HeaderComponent

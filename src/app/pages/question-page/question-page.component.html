@@ -1,0 +1,45 @@
+<div class="page-container">
+
+  <header></header>
+
+  <div class="main-content">
+    <mat-list *ngIf="( question$ | async ) as question">
+      <mat-list-item>
+        <div class="flex-column">
+          <h2>
+            {{question.title}}
+          </h2>
+          <span class="question-info">
+            author: {{question.user.username}} |
+            date created: {{question.gmtCreate | date}} |
+            view count: {{question.viewCount}}
+          </span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div class="question-description" fxLayout="row" fxLayoutAlign="center center">
+          {{question.description}}
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let comment of questionComments$ | async" fxLayout="column">
+        <question-comment></question-comment>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div fxLayout="column" class="w-100">
+          <div fxLayout="row">
+            <img class="question-profile-img" src="{{question.user.avatarUrl}}">
+            <h4 class="mx-2">{{question.user.username}}</h4>
+          </div>
+          <textarea [(ngModel)]="postingComment.content" class="form-control my-2" rows="6" id="comment-content"></textarea>
+          <div fxFlexAlign="end" class="mb-3">
+            <button mat-button type="button" class="btn btn-success btn-comment" (click)="postComment()">Comment</button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+

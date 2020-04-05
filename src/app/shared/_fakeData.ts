@@ -83,10 +83,64 @@ export const QUESTIONS = [{
     "password": "$2a$10$VpsnPMGEEi4LmqBSKeqVXep4VHwkG1luPtrEewN1d6mkAjCUK1Fs6"
   }
 }];
-
 export const COMMENTS = [
   {
     "id": 3,
+    "parentId": 2,
+    "type": 2,
+    "commentator": 1,
+    "gmtCreate": 1585385895854,
+    "gmtModified": 1585385895854,
+    "likeCount": 13,
+    "commentCount": 0,
+    "content": "1st comment to comment 2"
+  }
+];
+export const COMMENTDTOS = [
+  {
+    "id": 3,
+    "parentId": 2,
+    "type": 2,
+    "commentator": 1,
+    "gmtCreate": 1585385895854,
+    "gmtModified": 1585385895854,
+    "likeCount": 13,
+    "commentCount": 0,
+    "content": "1st comment to comment 2",
+    "user": {
+      "id": 1,
+      "accountId": null,
+      "username": "zack",
+      "token": null,
+      "gmtCreate": null,
+      "gmtModified": null,
+      "avatarUrl": "https://firebasestorage.googleapis.com/v0/b/inteloom-5d76d.appspot.com/o/images%2FBird_Seed.png?alt=media&token=d97b45ea-0569-4e2c-9ee0-50048f665226",
+      "password": "$2a$10$VpsnPMGEEi4LmqBSKeqVXep4VHwkG1luPtrEewN1d6mkAjCUK1Fs6"
+    }
+  },
+  {
+    "id": 4,
+    "parentId": 2,
+    "type": 2,
+    "commentator": 1,
+    "gmtCreate": 1585385895854,
+    "gmtModified": 1585385895854,
+    "likeCount": 13,
+    "commentCount": 0,
+    "content": "1st comment to comment 2",
+    "user": {
+      "id": 1,
+      "accountId": null,
+      "username": "zack",
+      "token": null,
+      "gmtCreate": null,
+      "gmtModified": null,
+      "avatarUrl": "https://firebasestorage.googleapis.com/v0/b/inteloom-5d76d.appspot.com/o/images%2FBird_Seed.png?alt=media&token=d97b45ea-0569-4e2c-9ee0-50048f665226",
+      "password": "$2a$10$VpsnPMGEEi4LmqBSKeqVXep4VHwkG1luPtrEewN1d6mkAjCUK1Fs6"
+    }
+  },
+  {
+    "id": 5,
     "parentId": 2,
     "type": 2,
     "commentator": 1,

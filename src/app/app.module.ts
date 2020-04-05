@@ -11,10 +11,12 @@ import {LoginPageComponent} from "./pages/login-page/login-page.component";
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {ErrorInterceptor} from "./interceptors/error-interceptor.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {QuestionPageComponent} from "./pages/question-page/question-page.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'login', component: LoginPageComponent},
+  {path: 'questions/:id', component: QuestionPageComponent}
 ];
 
 @NgModule({

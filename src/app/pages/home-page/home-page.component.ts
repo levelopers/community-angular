@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit {
   constructor(private questionsService: QuestionsService) { }
 
   ngOnInit(): void {
-    this.quesionts$ = this.questionsService.questions
+    this.quesionts$ = this.questionsService.getQuestions()
   }
 
 }

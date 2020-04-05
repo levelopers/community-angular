@@ -42,7 +42,7 @@ export class UserService {
   //   return this.http.post<User>(url, user);
   // }
 
-  user(): Observable<User> {
+  getCurrentUser(): Observable<User> {
     const GET_USER_URL = `${rootUrl}/user`;
    // return this.http.get<APIResponse>(GET_USER_URL).pipe(
    //   map(res => {
