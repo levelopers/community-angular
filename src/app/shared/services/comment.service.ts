@@ -3,10 +3,11 @@ import {CommentModel} from "../models/CommentModel";
 import {Observable, of} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {rootUrl} from "../../configs/api-config";
-import {map} from "rxjs/operators";
+import {delay, map} from "rxjs/operators";
 import {APIResponse} from "../models/APIResponse";
-import {COMMENTS} from "../_fakeData";
+import {COMMENTDTOS, COMMENTS} from "../_fakeData";
 import {CreateCommentModel} from "../models/CreateCommentModel";
+import {CommentDTOModel} from "../models/CommentDTOModel";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,16 @@ export class CommentService {
     //     return res?.data;
     //   })
     // )
-   return of(COMMENTS[0]);
+    console.log(`postComment: ${JSON.stringify(comment)}`);
+   return of(COMMENTS[0]).pipe(delay(1000));
+  }
+
+  public getSubComments(commentId:number):Observable<CommentDTOModel[]> {
+    // return this.http.get<APIResponse>(rootUrl + this.commentAPI + commentId).pipe(
+    //   map((res: APIResponse) => {
+    //     return res?.data;
+    //   })
+    // )
+    return of(COMMENTDTOS);
   }
 }

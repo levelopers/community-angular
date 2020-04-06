@@ -12,6 +12,8 @@ import {FlexModule} from "@angular/flex-layout/typings/flex";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
 import { QuestionCommentComponent } from './question-page/components/question-comment/question-comment.component';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatInputModule} from "@angular/material/input";
 
 
 
@@ -31,7 +33,9 @@ import { QuestionCommentComponent } from './question-page/components/question-co
     RouterModule,
     MatListModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule,
+
   ],
   exports: [
     HomePageComponent,

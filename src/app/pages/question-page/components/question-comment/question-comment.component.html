@@ -1,1 +1,51 @@
-<p>question-comment works!</p>
+<div class="question-comment" fxLayout="row">
+  <div class="comment-user-img-container">
+    <img class="comment-user-img" src="{{comment.user.avatarUrl}}">
+  </div>
+  <div fxLayout="column" class="ml-2">
+    <h4>{{comment.user.username}}</h4>
+    <span class="w-100">
+      {{comment.content}}
+    </span>
+    <div fxLayout="row">
+      <span (click)="clickLike()"
+            [ngClass]="isLiked? 'active':'disable'"
+            class="far fa-thumbs-up cursor-pointer mr-2 my-2">
+        {{comment.likeCount}}
+      </span>
+      <span (click)="clickSubComments($event)"
+            [matMenuTriggerFor]="subComment"
+            [ngClass]="isSubCommentCollapsed? 'active':'disable'"
+            class="far fa-comments cursor-pointer mr-2 my-2">
+        {{comment.commentCount}}
+      </span>
+      <mat-menu #subComment fxLayout="column" class="question-comment-subcomment" yPosition="below">
+        <ng-container *ngFor="let subComment of subComments$ | async">
+          <div fxLayout="row" class="m-2" (click)="$event.stopPropagation()">
+            <div class="comment-user-img-container">
+              <img class="comment-user-img" src="{{comment.user.avatarUrl}}">
+            </div>
+            <div fxLayout="column" class="ml-2">
+              <h4>{{subComment.user.username}}</h4>
+              <span class="w-100">{{subComment.content}}</span>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </ng-container>
+        <div (click)="$event.stopPropagation()" class="m-2">
+          <textarea [(ngModel)]="postSubCommentBody.content" rows="2" class="form-control"></textarea>
+          <div class="ml-auto my-2" fxLayoutAlign="end">
+            <button (click)="replyComment()"
+                    [disabled]="postSubCommentStatus === RequestStatusEnum.LOADING"
+                    mat-button
+                    type="button"
+                    class="btn btn-success btn-comment">
+              Comment
+            </button>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+  </div>
+
+</div>

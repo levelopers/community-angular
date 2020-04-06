@@ -24,7 +24,7 @@
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item *ngFor="let comment of questionComments$ | async" fxLayout="column">
-        <question-comment></question-comment>
+        <question-comment [comment]="comment"></question-comment>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
