@@ -1,0 +1,24 @@
+<div class="page-container">
+  <header></header>
+  <div class="main-content" fxLayout="column">
+    <mat-list>
+      <mat-list-item>
+        <h2>New Question</h2>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <input class="form-control" required [(ngModel)]="postingQuestion.title" placeholder="Title"/>
+      </mat-list-item>
+      <mat-list-item>
+        <input class="form-control" [(ngModel)]="postingQuestion.tag" placeholder="Tags"/>
+      </mat-list-item>
+      <mat-list-item>
+        <textarea class="form-control" rows="6" [(ngModel)]="postingQuestion.description"
+                  placeholder="Content"></textarea>
+      </mat-list-item>
+      <div class="m-2" fxLayoutAlign="end">
+        <button mat-button (click)="publishQuestion()" [disabled]="postQuestionStatus === RequestStatusEnum.LOADING" class="btn btn-success">Publish</button>
+      </div>
+    </mat-list>
+  </div>
+</div>

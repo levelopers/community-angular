@@ -14,6 +14,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { QuestionCommentComponent } from './question-page/components/question-comment/question-comment.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatInputModule} from "@angular/material/input";
+import { PublishPageComponent } from './publish-page/publish-page.component';
 
 
 
@@ -22,7 +23,8 @@ import {MatInputModule} from "@angular/material/input";
     HomePageComponent,
     LoginPageComponent,
     QuestionPageComponent,
-    QuestionCommentComponent
+    QuestionCommentComponent,
+    PublishPageComponent
   ],
   imports: [
     CommonModule,

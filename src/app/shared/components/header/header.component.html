@@ -9,7 +9,7 @@
       <span class="menu-spacer"></span>
       <div fxShow="true" fxHide.lt-sm>
 <!--        TODO add router-->
-        <button mat-raised-button class="mx-1"><span class="far fa-edit"></span>New Question</button>
+        <button routerLink="/publish" mat-raised-button class="mx-1"><span class="far fa-edit"></span>New Question</button>
         <button mat-button class="mx-1" [matMenuTriggerFor]="menu">
           <span class="fas fa-user">
             <span class="mx-1">{{currentUser.username || ""}}</span>
