@@ -1,0 +1,27 @@
+<div class="page-container">
+  <header></header>
+  <div class="main-content">
+    <mat-list *ngIf="!!user">
+      <mat-list-item>
+        <h2><span class="far fa-comment-dots mr-2"></span>Settings</h2>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+<!--        TODO upload image-->
+        <input matInput class="form-control" [(ngModel)]="user.avatarUrl" placeholder="avatarUrl"/>
+      </mat-list-item>
+      <mat-list-item>
+        <input matInput class="form-control" [(ngModel)]="user.username" placeholder="username"/>
+      </mat-list-item>
+      <mat-list-item>
+<!--        TODO change password-->
+        <input matInput class="form-control"
+               placeholder="password"/>
+<!--        [(ngModel)]="user.username"-->
+      </mat-list-item>
+      <div class="m-2" fxLayoutAlign="end">
+        <button mat-button (click)="updateSettings()" [disabled]="updateSettingsStatus === RequestStatusEnum.LOADING" class="btn btn-success">Update</button>
+      </div>
+    </mat-list>
+  </div>
+</div>

@@ -57,4 +57,13 @@ export class QuestionsService {
     return of(QUESTIONS[0]).pipe(delay(1000));
   }
 
+    public getCurrentUserQuestions(): Observable<Question[]> {
+    const GET_CURRENT_USER_QUESTIONS_URL = "/profile/question";
+    // return this.http.get<APIResponse>(GET_CURRENT_USER_QUESTIONS_URL).pipe(
+    //   map((res: APIResponse) => {
+    //     return res?.data;
+    //   })
+    // );
+    return of(QUESTIONS).pipe(delay(1000));
+  }
 }

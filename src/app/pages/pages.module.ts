@@ -15,6 +15,8 @@ import { QuestionCommentComponent } from './question-page/components/question-co
 import {MatMenuModule} from "@angular/material/menu";
 import {MatInputModule} from "@angular/material/input";
 import { PublishPageComponent } from './publish-page/publish-page.component';
+import { SettingPageComponent } from './setting-page/setting-page.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 
 
@@ -24,21 +26,24 @@ import { PublishPageComponent } from './publish-page/publish-page.component';
     LoginPageComponent,
     QuestionPageComponent,
     QuestionCommentComponent,
-    PublishPageComponent
+    PublishPageComponent,
+    SettingPageComponent,
+    ProfilePageComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgbModule,
-    RouterModule,
-    MatListModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    MatMenuModule,
+    imports: [
+        CommonModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgbModule,
+        RouterModule,
+        MatListModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatInputModule,
 
-  ],
+    ],
   exports: [
     HomePageComponent,
     LoginPageComponent

@@ -13,12 +13,16 @@ import {ErrorInterceptor} from "./interceptors/error-interceptor.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {QuestionPageComponent} from "./pages/question-page/question-page.component";
 import {PublishPageComponent} from "./pages/publish-page/publish-page.component";
+import {SettingPageComponent} from "./pages/setting-page/setting-page.component";
+import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'questions/:id', component: QuestionPageComponent},
-  {path: 'publish', component: PublishPageComponent}
+  {path: 'publish', component: PublishPageComponent},
+  {path: 'setting', component: SettingPageComponent},
+  {path: 'profile', component: ProfilePageComponent}
 ];
 
 @NgModule({

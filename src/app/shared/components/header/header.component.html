@@ -17,9 +17,10 @@
           </span>
         </button>
         <mat-menu #menu="matMenu">
+          <button routerLink="/setting" mat-menu-item><span class="fas fa-cog mx-1"></span>Settings</button>
           <!--          TODO add router-->
-          <button mat-menu-item><span class="fas fa-cog"><span class="mx-1">Settings</span></span></button>
-          <button mat-menu-item><span class="fas fa-newspaper"><span class="mx-1"> My posts</span></span></button>
+          <button routerLink="/profile" mat-menu-item><span class="fas fa-newspaper mx-1"></span>My posts</button>
+          <button mat-menu-item (click)="logout()"><span class="fas fa-sign-out-alt mx-1"></span>Logout</button>
         </mat-menu>
       </div>
     </mat-toolbar-row>

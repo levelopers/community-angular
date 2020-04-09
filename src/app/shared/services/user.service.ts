@@ -51,4 +51,15 @@ export class UserService {
    // )
     return of(USER);
   }
+
+  updateCurrentUser(user: User): Observable<User> {
+    console.log("updateCurrentUser: " + JSON.stringify(user));
+    const PUT_USER_URL = `${rootUrl}/user`;
+    // return this.http.put<APIResponse>(PUT_USER_URL,user).pipe(
+    //   map(res => {
+    //     return res.data;
+    //   })
+    // )
+    return of(USER);
+  }
 }

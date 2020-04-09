@@ -3,14 +3,14 @@
   <div class="main-content" fxLayout="column">
     <mat-list>
       <mat-list-item>
-        <h2>New Question</h2>
+        <h2><span class="far fa-comment-dots mr-2"></span>New Question</h2>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <input class="form-control" required [(ngModel)]="postingQuestion.title" placeholder="Title"/>
+        <input matInput class="form-control" required [(ngModel)]="postingQuestion.title" placeholder="Title"/>
       </mat-list-item>
       <mat-list-item>
-        <input class="form-control" [(ngModel)]="postingQuestion.tag" placeholder="Tags"/>
+        <input matInput class="form-control" [(ngModel)]="postingQuestion.tag" placeholder="Tags"/>
       </mat-list-item>
       <mat-list-item>
         <textarea class="form-control" rows="6" [(ngModel)]="postingQuestion.description"
