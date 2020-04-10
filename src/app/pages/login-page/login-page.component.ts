@@ -21,15 +21,9 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-
   onSubmit() {
     if(this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe(data => console.log(data))
     }
   }
-
-  logout() {
-    this.userService.logout();
-  }
-
 }

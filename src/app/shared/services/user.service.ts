@@ -36,11 +36,17 @@ export class UserService {
   logout() {
     this.cookieService.delete('token');
   }
-  //
-  // signUp(user: User): Observable<User> {
-  //   const url = `${apiUrl}/register`;
-  //   return this.http.post<User>(url, user);
-  // }
+
+  signUp(user: User): Observable<User> {
+    console.log("signup: " + JSON.stringify(user));
+    const url = `${rootUrl}/users/signup`;
+    // return this.http.post<APIResponse>(url, user).pipe(
+    //   map(res => {
+    //     return res.data;
+    //   })
+    // );
+    return of(USER);
+  }
 
   getCurrentUser(): Observable<User> {
     const GET_USER_URL = `${rootUrl}/user`;

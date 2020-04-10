@@ -15,14 +15,16 @@ import {QuestionPageComponent} from "./pages/question-page/question-page.compone
 import {PublishPageComponent} from "./pages/publish-page/publish-page.component";
 import {SettingPageComponent} from "./pages/setting-page/setting-page.component";
 import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
+import {SignupPageComponent} from "./pages/signup-page/signup-page.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'login', component: LoginPageComponent},
+  {path: 'signup', component: SignupPageComponent},
   {path: 'questions/:id', component: QuestionPageComponent},
   {path: 'publish', component: PublishPageComponent},
   {path: 'setting', component: SettingPageComponent},
-  {path: 'profile', component: ProfilePageComponent}
+  {path: 'profile', component: ProfilePageComponent},
 ];
 
 @NgModule({

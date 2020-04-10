@@ -17,6 +17,8 @@ import {MatInputModule} from "@angular/material/input";
 import { PublishPageComponent } from './publish-page/publish-page.component';
 import { SettingPageComponent } from './setting-page/setting-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 
@@ -28,7 +30,8 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     QuestionCommentComponent,
     PublishPageComponent,
     SettingPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    SignupPageComponent
   ],
     imports: [
         CommonModule,
@@ -42,6 +45,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
         MatButtonModule,
         MatMenuModule,
         MatInputModule,
+        MatCardModule,
 
     ],
   exports: [

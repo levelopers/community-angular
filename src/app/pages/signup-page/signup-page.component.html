@@ -1,14 +1,14 @@
-﻿<div class="page-container">
+<div class="page-container">
   <header></header>
   <div class="main-content w-50 mx-auto bg-transparent">
     <mat-card class="w-100">
-      <mat-card-title>Login</mat-card-title>
+      <mat-card-title>Sign Up</mat-card-title>
       <mat-card-content>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxLayout="column">
-          <!--          TODO upload avatar img -->
-          <!--          <mat-form-field>-->
-          <!--          <button mat-raised-button (click)="upLoadAvatar()">Upload</button>-->
-          <!--          </mat-form-field>-->
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" fxLayout="column">
+<!--          TODO upload avatar img -->
+<!--          <mat-form-field>-->
+<!--          <button mat-raised-button (click)="upLoadAvatar()">Upload</button>-->
+<!--          </mat-form-field>-->
           <mat-form-field>
             <mat-label>Username</mat-label>
             <input matInput
@@ -17,8 +17,8 @@
                    name="username"
                    placeholder="Username"
                    formControlName="username"/>
-            <mat-error *ngIf="loginForm.controls['username'].errors
-                              &&loginForm.controls['username'].errors.required">
+            <mat-error *ngIf="signupForm.controls['username'].errors
+                              &&signupForm.controls['username'].errors.required">
               Username is required.
             </mat-error>
           </mat-form-field>
@@ -31,16 +31,15 @@
                    placeholder="Password"
                    name="password"
                    formControlName="password">
-            <mat-error *ngIf="loginForm.controls['password'].errors
-                              &&loginForm.controls['password'].errors.required">
+            <mat-error *ngIf="signupForm.controls['password'].errors
+                              &&signupForm.controls['password'].errors.required">
               Password is required.
             </mat-error>
           </mat-form-field>
           <div fxLayoutAlign="end">
             <button type="submit"
                     class="btn btn-primary"
-                    [disabled]="!loginForm.valid">
-              Login
+                    [disabled]="!signupForm.valid">Sign up
             </button>
           </div>
         </form>
@@ -48,10 +47,9 @@
     </mat-card>
     <mat-card class="mt-4">
       <div fxLayout="row" fxLayoutAlign="center">
-        New user?&nbsp;
-        <a routerLink="/signup">Create an Account</a>
+        Already have an account?&nbsp;
+        <a routerLink="/login">Sign in</a>
       </div>
     </mat-card>
   </div>
 </div>
-
