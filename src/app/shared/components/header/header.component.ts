@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/User";
+import {Observable} from "rxjs";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'header',
@@ -8,12 +10,18 @@ import {User} from "../../models/User";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  currentUser: User;
+   public currentUser: Observable<User>;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private authService: AuthService) {
+  }
 
   ngOnInit(): void {
-  this.userService.getCurrentUser().subscribe(user => this.currentUser = user);
+    const userToken = this.authService.getToken();
+    if (!!userToken) {
+      this.userService.getCurrentUser().subscribe();
+    }
+    this.currentUser = this.userService.currentUserObservable;
   }
 
   public logout() {

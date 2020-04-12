@@ -19,6 +19,8 @@ import { SettingPageComponent } from './setting-page/setting-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import {MatCardModule} from "@angular/material/card";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatIconModule} from "@angular/material/icon";
 
 
 
@@ -33,21 +35,23 @@ import {MatCardModule} from "@angular/material/card";
     ProfilePageComponent,
     SignupPageComponent
   ],
-    imports: [
-        CommonModule,
-        SharedModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgbModule,
-        RouterModule,
-        MatListModule,
-        FlexLayoutModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatInputModule,
-        MatCardModule,
+  imports: [
+    CommonModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    RouterModule,
+    MatListModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatInputModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
 
-    ],
+  ],
   exports: [
     HomePageComponent,
     LoginPageComponent

@@ -1,12 +1,10 @@
 import {Injectable} from '@angular/core';
-import {catchError, map, tap} from "rxjs/operators";
-import {BehaviorSubject, Observable, of} from "rxjs";
+import {delay, map} from "rxjs/operators";
+import {Observable, of, Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {CookieService} from "ngx-cookie-service";
 import {rootUrl} from "../../configs/api-config";
 import {APIResponse} from "../models/APIResponse";
 import {AuthService} from "./auth.service";
-import {root} from "rxjs/internal-compatibility";
 import {User} from "../models/User";
 import {USER} from "../_fakeData";
 
@@ -14,9 +12,10 @@ import {USER} from "../_fakeData";
   providedIn: 'root'
 })
 export class UserService {
+  public currentUserSubject: Subject<User> = new Subject<User>();
+  public currentUserObservable: Observable<User> = this.currentUserSubject.asObservable();
 
   constructor(private http: HttpClient,
-              private cookieService: CookieService,
               private authService: AuthService) {
   }
 
@@ -25,7 +24,7 @@ export class UserService {
     return this.http.post<APIResponse>(loginUrl, loginForm).pipe(
       map(res => {
         if (res && res.data && res.data.token) {
-          this.cookieService.set('token', res.data.token);
+          this.authService.setToken(res.data.token);
         }
         return res;
       }),
@@ -34,7 +33,8 @@ export class UserService {
   }
 
   logout() {
-    this.cookieService.delete('token');
+    this.authService.removeToken();
+    this.currentUserSubject.next(null);
   }
 
   signUp(user: User): Observable<User> {
@@ -45,17 +45,18 @@ export class UserService {
     //     return res.data;
     //   })
     // );
-    return of(USER);
+    return of(USER).pipe(delay(2000));
   }
 
   getCurrentUser(): Observable<User> {
     const GET_USER_URL = `${rootUrl}/user`;
-   // return this.http.get<APIResponse>(GET_USER_URL).pipe(
-   //   map(res => {
-   //     return res.data;
-   //   })
-   // )
-    return of(USER);
+   return this.http.get<APIResponse>(GET_USER_URL).pipe(
+     map(res => {
+       this.currentUserSubject.next(res.data);
+       return res.data;
+     })
+   )
+   //  return of(USER);
   }
 
   updateCurrentUser(user: User): Observable<User> {

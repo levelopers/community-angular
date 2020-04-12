@@ -10,12 +10,17 @@
       <div fxShow="true" fxHide.lt-sm>
 <!--        TODO add router-->
         <button routerLink="/publish" mat-raised-button class="mx-1"><span class="far fa-edit"></span>New Question</button>
-        <button mat-button class="mx-1" [matMenuTriggerFor]="menu">
+        <ng-container *ngIf="currentUser | async as user; else loginButtonTemplate">
+          <button mat-button class="mx-1" [matMenuTriggerFor]="menu">
           <span class="fas fa-user">
-            <span class="mx-1">{{currentUser.username || ""}}</span>
+            <span class="mx-1">{{user.username || ""}}</span>
             <i class="fas fa-caret-down"></i>
           </span>
-        </button>
+          </button>
+        </ng-container>
+        <ng-template #loginButtonTemplate>
+          <button routerLink="/login" mat-raised-button class="mx-1"><span class="fas fa-sign-in-alt"></span>Login</button>
+        </ng-template>
         <mat-menu #menu="matMenu">
           <button routerLink="/setting" mat-menu-item><span class="fas fa-cog mx-1"></span>Settings</button>
           <!--          TODO add router-->
