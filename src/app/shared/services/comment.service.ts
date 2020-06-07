@@ -19,21 +19,29 @@ export class CommentService {
   }
 
   public postComment(comment: CreateCommentModel): Observable<CommentModel> {
-    // return this.http.post<APIResponse>(rootUrl + this.commentAPI, comment).pipe(
-    //   map((res: APIResponse) => {
-    //     return res?.data;
-    //   })
-    // )
     console.log(`postComment: ${JSON.stringify(comment)}`);
-   return of(COMMENTS[0]).pipe(delay(1000));
+    return this.http.post<APIResponse>(rootUrl + this.commentAPI, comment).pipe(
+      map((res: APIResponse) => {
+        return res?.data;
+      })
+    );
+    // return of(COMMENTS[0]).pipe(delay(1000));
   }
 
-  public getSubComments(commentId:number):Observable<CommentDTOModel[]> {
-    // return this.http.get<APIResponse>(rootUrl + this.commentAPI + commentId).pipe(
-    //   map((res: APIResponse) => {
-    //     return res?.data;
-    //   })
-    // )
-    return of(COMMENTDTOS);
+  public getSubComments(commentId: number): Observable<CommentDTOModel[]> {
+    return this.http.get<APIResponse>(rootUrl + this.commentAPI + '/' + commentId).pipe(
+      map((res: APIResponse) => {
+        return res?.data;
+      })
+    )
+    // return of(COMMENTDTOS);
+  }
+
+  public incCommentLikeCount(commentId: number): Observable<any> {
+    return this.http.post<APIResponse>(rootUrl + this.commentAPI + '/' + commentId + '/' + "like", null).pipe(
+      map((res: APIResponse) => {
+        return res?.data;
+      })
+    )
   }
 }

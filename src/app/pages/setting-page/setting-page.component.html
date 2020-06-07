@@ -8,6 +8,7 @@
       <mat-list-item>
 <!--        TODO upload image-->
         <input matInput class="form-control" [(ngModel)]="user.avatarUrl" placeholder="avatarUrl"/>
+<!--        <upload-image style="height: fit-content" matInput class="form-control" ></upload-image>-->
       </mat-list-item>
       <mat-list-item>
         <input matInput class="form-control" [(ngModel)]="user.username" placeholder="username"/>
@@ -15,6 +16,7 @@
       <mat-list-item>
 <!--        TODO change password-->
         <input matInput class="form-control"
+               [(ngModel)]="user.password"
                placeholder="password"/>
 <!--        [(ngModel)]="user.username"-->
       </mat-list-item>

@@ -15,7 +15,7 @@ import {CommentDTOModel} from "../../shared/models/CommentDTOModel";
 })
 export class QuestionPageComponent implements OnInit {
   public question$: Observable<Question>;
-  public postingComment: CreateCommentModel = new CreateCommentModel();
+  public postingComment: CreateCommentModel;
   public questionComments$: Observable<CommentDTOModel[]>;
   constructor(private questionsService: QuestionsService,
               private commentService: CommentService,
@@ -25,11 +25,11 @@ export class QuestionPageComponent implements OnInit {
     const questionId =  Number(this.route.snapshot.paramMap.get("id"));
     this.question$ = this.questionsService.getQuestionByQuestionId(questionId);
     this.questionComments$ = this.questionsService.getCommentsByQuestionId(questionId);
-    this.postingComment.parentId = questionId;
+    this.postingComment = new CreateCommentModel(questionId, 1);
   }
 
  public postComment() {
-    console.log(this.postingComment);
+    // TODO request status (update UX)
     this.commentService.postComment(this.postingComment).subscribe();
   }
 }

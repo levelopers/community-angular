@@ -43,9 +43,12 @@
                 <mat-spinner color="accent" diameter="20">
                 </mat-spinner>
               </mat-icon>
-              Login
+              Sign Up
             </button>
           </div>
+          <mat-error *ngIf="signupStatus === RequestStatusEnum.FAIL">
+            Username is existed
+          </mat-error>
         </form>
       </mat-card-content>
     </mat-card>

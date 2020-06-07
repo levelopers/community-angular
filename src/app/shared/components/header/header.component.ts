@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {User} from "../../models/User";
 import {Observable} from "rxjs";
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
    public currentUser: Observable<User>;
 
   constructor(private userService: UserService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -26,5 +28,6 @@ export class HeaderComponent implements OnInit {
 
   public logout() {
     this.userService.logout();
+    this.router.navigate(['/']);
   }
 }

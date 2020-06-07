@@ -1,0 +1,3 @@
+<input type="file" #fileInput id="fileUpload" name="fileUpload" accept="image/*" (change)="onFileChanged($event)"/>
+<button mat-raised-button color="primary" (click)="onUpload()">Upload</button>
+<span class="ml-3">less than 1MB image</span>

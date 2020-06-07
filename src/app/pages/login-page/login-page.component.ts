@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../shared/services/user.service";
 import {Router} from "@angular/router";
 import {RequestStatusEnum} from "../../shared/models/RequestStatus.enum";
+import {catchError} from "rxjs/operators";
+import {throwError} from "rxjs";
 
 @Component({
   selector: 'login-page',
@@ -30,13 +32,16 @@ export class LoginPageComponent implements OnInit {
   onSubmit() {
     if(this.loginForm.valid) {
       this.loginStatus = RequestStatusEnum.LOADING;
-      this.userService.login(this.loginForm.value).subscribe(res => {
+      this.userService.login(this.loginForm.value)
+        .pipe(catchError(err => {
+          this.loginStatus = RequestStatusEnum.FAIL;
+          return throwError(err);
+        })).subscribe(res => {
         if (!!res) {
           this.userService.getCurrentUser().subscribe();
           this.router.navigate(['/']);
           this.loginStatus = RequestStatusEnum.SUCCESS;
         }
-        this.loginStatus = RequestStatusEnum.FAIL;
       })
     }
   }

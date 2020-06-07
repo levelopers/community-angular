@@ -23,6 +23,7 @@ export class PublishPageComponent implements OnInit {
       alert("title required");
     }
     this.postQuestionStatus = RequestStatusEnum.LOADING;
+    // TODO jump to default page after request success
     this.questionsService.postQuestion(this.postingQuestion).subscribe(res => {
       if(res) {
         this.postQuestionStatus = RequestStatusEnum.SUCCESS;

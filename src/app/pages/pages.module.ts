@@ -21,6 +21,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatIconModule} from "@angular/material/icon";
+// import { UploadImageComponent } from './setting-page/components/upload-image/upload-image.component';
 
 
 
@@ -33,7 +34,7 @@ import {MatIconModule} from "@angular/material/icon";
     PublishPageComponent,
     SettingPageComponent,
     ProfilePageComponent,
-    SignupPageComponent
+    SignupPageComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +51,6 @@ import {MatIconModule} from "@angular/material/icon";
     MatCardModule,
     MatProgressSpinnerModule,
     MatIconModule,
-
   ],
   exports: [
     HomePageComponent,

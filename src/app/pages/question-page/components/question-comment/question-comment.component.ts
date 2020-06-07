@@ -32,6 +32,8 @@ export class QuestionCommentComponent implements OnInit {
 
   clickLike() {
     this.isLiked = true;
+    // TODO update UX
+    this.commentService.incCommentLikeCount(this.comment.id).subscribe();
   }
 
   clickSubComments($event) {

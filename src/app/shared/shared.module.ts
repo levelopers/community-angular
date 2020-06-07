@@ -27,7 +27,7 @@ import {RouterModule} from "@angular/router";
     FlexLayoutModule,
     MatIconModule,
     MatMenuModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     HeaderComponent

@@ -46,6 +46,9 @@
               Login
             </button>
           </div>
+          <mat-error *ngIf="loginStatus === RequestStatusEnum.FAIL">
+            Wrong username and password
+          </mat-error>
         </form>
       </mat-card-content>
     </mat-card>
