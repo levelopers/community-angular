@@ -44,4 +44,12 @@ export class CommentService {
       })
     )
   }
+
+  public decCommentLikeCount(commentId: number): Observable<any> {
+    return this.http.post<APIResponse>(rootUrl + this.commentAPI + '/' + commentId + '/' + "dislike", null).pipe(
+      map((res: APIResponse) => {
+        return res?.data;
+      })
+    )
+  }
 }

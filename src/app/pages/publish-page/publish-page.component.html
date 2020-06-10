@@ -18,6 +18,9 @@
       <div class="m-2" fxLayoutAlign="end">
         <button mat-button (click)="publishQuestion()" [disabled]="postQuestionStatus === RequestStatusEnum.LOADING" class="btn btn-success">Publish</button>
       </div>
+      <mat-error *ngIf="postQuestionStatus === RequestStatusEnum.FAIL">
+        Posting question failed
+      </mat-error>
     </mat-list>
   </div>
 </div>

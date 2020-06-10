@@ -43,6 +43,9 @@
               Comment
             </button>
           </div>
+          <mat-error *ngIf="postSubCommentStatus === RequestStatusEnum.FAIL">
+            Posting subComment failed
+          </mat-error>
         </div>
       </mat-menu>
     </div>

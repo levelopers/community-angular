@@ -2,10 +2,11 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {CommentDTOModel} from "../../../../shared/models/CommentDTOModel";
 import {MatMenuTrigger} from "@angular/material/menu";
 import {CommentService} from "../../../../shared/services/comment.service";
-import {Observable} from "rxjs";
+import {Observable, throwError} from "rxjs";
 import {CreateCommentModel} from "../../../../shared/models/CreateCommentModel";
 import {CommentModel} from "../../../../shared/models/CommentModel";
 import {RequestStatusEnum} from "../../../../shared/models/RequestStatus.enum";
+import {catchError} from "rxjs/operators";
 
 @Component({
   selector: 'question-comment',
@@ -31,9 +32,24 @@ export class QuestionCommentComponent implements OnInit {
   }
 
   clickLike() {
-    this.isLiked = true;
-    // TODO update UX
-    this.commentService.incCommentLikeCount(this.comment.id).subscribe();
+    this.isLiked = !this.isLiked;
+    if (!!this.isLiked) {
+      this.commentService.incCommentLikeCount(this.comment.id).subscribe(
+        res => {
+          if (!!res) {
+            this.comment.likeCount ++;
+          }
+        }
+      );
+    } else {
+      this.commentService.decCommentLikeCount(this.comment.id).subscribe(
+        res => {
+          if (!!res) {
+            this.comment.likeCount --;
+          }
+        }
+      );
+    }
   }
 
   clickSubComments($event) {
@@ -47,14 +63,19 @@ export class QuestionCommentComponent implements OnInit {
       return;
     }
     this.postSubCommentStatus = RequestStatusEnum.LOADING;
-    this.commentService.postComment(this.postSubCommentBody).subscribe((res: CommentModel) => {
-        this.isSubCommentCollapsed = true;
-        if (res) {
+    this.commentService.postComment(this.postSubCommentBody)
+      .pipe(catchError(err => {
+        this.postSubCommentStatus = RequestStatusEnum.FAIL;
+        return throwError(err);
+      })).subscribe((res: CommentModel) => {
+        if (!!res) {
+          this.isSubCommentCollapsed = true;
           this.postSubCommentBody.content = "";
           this.postSubCommentStatus = RequestStatusEnum.SUCCESS;
+          this.comment.commentCount ++;
+          this.trigger.closeMenu();
+          this.subComments$ = this.commentService.getSubComments(this.comment.id);
         }
-        this.postSubCommentStatus = RequestStatusEnum.FAIL;
-        this.trigger.closeMenu();
       }
     );
 

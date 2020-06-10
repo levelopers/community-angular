@@ -44,8 +44,4 @@ export class SignupPageComponent implements OnInit {
       })
     }
   }
-
-  upLoadAvatar() {
-
-  }
 }

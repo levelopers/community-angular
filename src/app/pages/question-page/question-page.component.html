@@ -32,8 +32,15 @@
           </div>
           <textarea [(ngModel)]="postingComment.content" class="form-control my-2" rows="6" id="comment-content"></textarea>
           <div fxFlexAlign="end" class="mb-3">
-            <button mat-button type="button" class="btn btn-success btn-comment" (click)="postComment()">Comment</button>
+            <button mat-button
+                    type="button"
+                    class="btn btn-success btn-comment"
+                    [disabled]="postCommentStatus === RequestStatusEnum.LOADING"
+                    (click)="postComment()">Comment</button>
           </div>
+          <mat-error *ngIf="postCommentStatus === RequestStatusEnum.FAIL">
+            Posting comment failed
+          </mat-error>
         </div>
       </mat-list-item>
     </mat-list>

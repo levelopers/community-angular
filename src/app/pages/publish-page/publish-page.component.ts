@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {QuestionsService} from "../../shared/services/questions.service";
 import {Question} from "../../shared/models/Question";
 import {RequestStatusEnum} from "../../shared/models/RequestStatus.enum";
+import {catchError} from "rxjs/operators";
+import {throwError} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'publish-page',
@@ -13,7 +16,8 @@ export class PublishPageComponent implements OnInit {
   public RequestStatusEnum: any = Object.assign({},RequestStatusEnum);
   public postQuestionStatus: RequestStatusEnum;
 
-  constructor(private questionsService: QuestionsService) { }
+  constructor(private questionsService: QuestionsService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,12 +27,15 @@ export class PublishPageComponent implements OnInit {
       alert("title required");
     }
     this.postQuestionStatus = RequestStatusEnum.LOADING;
-    // TODO jump to default page after request success
-    this.questionsService.postQuestion(this.postingQuestion).subscribe(res => {
-      if(res) {
+    this.questionsService.postQuestion(this.postingQuestion)
+      .pipe(catchError(err => {
+        this.postQuestionStatus = RequestStatusEnum.FAIL;
+        return throwError(err);
+      })).subscribe(res => {
+      if (!!res) {
+        this.router.navigate(['/']);
         this.postQuestionStatus = RequestStatusEnum.SUCCESS;
       }
-      this.postQuestionStatus = RequestStatusEnum.FAIL;
-    });
+    })
   }
 }
