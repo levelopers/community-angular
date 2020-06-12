@@ -2,23 +2,23 @@
   <div class="main-content">
     <h2 class="pt-3 px-3"><span class="fas fa-folder-plus mr-2"></span>My Questions</h2>
     <mat-divider></mat-divider>
-    <mat-list *ngFor="let question of postedQuestions$ | async">
-      <mat-list-item *ngIf="!!question">
-        <div class="profile-question-user-img-container">
-          <img class="profile-question-user-img" src="{{question.user.avatarUrl}}">
-        </div>
-        <div fxLayout="column" class="ml-2">
-          <a routerLink="/questions/{{question.id}}" class="mb-3">{{question.title}}</a>
-          <span class="profile-question-info">
+    <mat-list class="pb-3">
+      <ng-container *ngFor="let question of postedQuestions$ | async">
+        <mat-list-item *ngIf="!!question" class="pb-3">
+          <div class="profile-question-user-img-container">
+            <img class="profile-question-user-img" src="{{question.user.avatarUrl}}">
+          </div>
+          <div fxLayout="column" class="ml-2">
+            <a routerLink="/questions/{{question.id}}" class="mb-3">{{question.title}}</a>
+            <span class="profile-question-info">
             <span>{{question.commentCount}} replies • </span>
             <span>{{question.viewCount}} views • </span>
             <span>{{ question.gmtCreate | date:"yyyy-MM-dd HH:mm:ss" }}</span>
-<!--            TODO edit question-->
+              <!--            TODO edit question-->
           </span>
-
-        </div>
-
-      </mat-list-item>
+          </div>
+        </mat-list-item>
+      </ng-container>
     </mat-list>
   </div>
 </div>

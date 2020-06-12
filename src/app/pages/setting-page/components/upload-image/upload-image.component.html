@@ -1,3 +1,15 @@
-<input type="file" #fileInput id="fileUpload" name="fileUpload" accept="image/*" (change)="onFileChanged($event)"/>
-<button mat-raised-button color="primary" (click)="onUpload()">Upload</button>
-<span class="ml-3">less than 1MB image</span>
+<div class="d-flex align-items-center">
+  <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)"/>
+  <ng-container *ngFor="let item of uploader.queue">
+    {{ item?.file?.size / 1024 / 1024 | number:'.2' }} MB
+  </ng-container>
+  <button type="button" class="btn btn-success btn-s mx-2"
+          (click)="onUpload()" [disabled]="!uploader.getNotUploadedItems().length">
+    <span class="glyphicon glyphicon-upload"></span> Upload
+  </button>
+  <mat-error *ngIf="uploadStatus === RequestStatusEnum.FAIL">Upload image failed.</mat-error>
+  <mat-icon *ngIf="uploadStatus === RequestStatusEnum.SUCCESS"
+            class="fas fa-check"
+            [ngStyle]="{'color':'green'}"></mat-icon>
+  <span class="ml-3">Max image size is 10MB</span>
+</div>

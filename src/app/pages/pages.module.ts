@@ -21,8 +21,8 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatIconModule} from "@angular/material/icon";
-// import { UploadImageComponent } from './setting-page/components/upload-image/upload-image.component';
-
+import { UploadImageComponent } from './setting-page/components/upload-image/upload-image.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -35,6 +35,7 @@ import {MatIconModule} from "@angular/material/icon";
     SettingPageComponent,
     ProfilePageComponent,
     SignupPageComponent,
+    UploadImageComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +52,7 @@ import {MatIconModule} from "@angular/material/icon";
     MatCardModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    FileUploadModule
   ],
   exports: [
     HomePageComponent,

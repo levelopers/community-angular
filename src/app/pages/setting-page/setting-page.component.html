@@ -1,28 +1,47 @@
 <div class="page-container">
   <div class="main-content">
-    <mat-list *ngIf="!!user">
-      <mat-list-item>
-        <h2><span class="far fa-comment-dots mr-2"></span>Settings</h2>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-<!--        TODO upload image-->
-        <input matInput class="form-control" [(ngModel)]="user.avatarUrl" placeholder="avatarUrl"/>
-<!--        <upload-image style="height: fit-content" matInput class="form-control" ></upload-image>-->
-      </mat-list-item>
-      <mat-list-item>
-        <input matInput class="form-control" [(ngModel)]="user.username" placeholder="username"/>
-      </mat-list-item>
-      <mat-list-item>
-<!--        TODO change password-->
-        <input matInput class="form-control"
-               [(ngModel)]="user.password"
-               placeholder="password"/>
-<!--        [(ngModel)]="user.username"-->
-      </mat-list-item>
-      <div class="m-2" fxLayoutAlign="end">
-        <button mat-button (click)="updateSettings()" [disabled]="updateSettingsStatus === RequestStatusEnum.LOADING" class="btn btn-success">Update</button>
-      </div>
-    </mat-list>
+    <mat-card class="w-100">
+      <mat-card-title class="pb-3"><span class="fas fa-tools mr-2"></span>Settings</mat-card-title>
+      <form (ngSubmit)="updateSettings()" fxLayout="column">
+        <ng-container *ngIf="user">
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput
+                   class="form-control"
+                   type="text"
+                   required
+                   name="setting-username"
+                   [(ngModel)]="user.username"
+                   placeholder="username"/>
+            <mat-error>
+              Username is required.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput
+                   class="form-control"
+                   type="text"
+                   name="setting-password"
+                   [(ngModel)]="user.password"
+                   placeholder="password"/>
+          </mat-form-field>
+        </ng-container>
+        <div class="d-flex flex-column">
+          <mat-label>Profile Avatar</mat-label>
+          <upload-image></upload-image>
+        </div>
+        <div class="m-2 d-flex justify-content-end">
+          <button mat-button
+                  type="submit"
+                  [disabled]="updateSettingsStatus === RequestStatusEnum.LOADING" class="btn btn-success">
+            Update
+          </button>
+          <mat-error *ngIf="updateSettingsStatus === RequestStatusEnum.FAIL">
+            Wrong username and password
+          </mat-error>
+        </div>
+      </form>
+    </mat-card>
   </div>
 </div>

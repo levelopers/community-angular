@@ -38,11 +38,9 @@ export class UserService {
   }
 
   signUp(user: User): Observable<User> {
-    console.log("signup: " + JSON.stringify(user));
     const url = `${rootUrl}/users/signup`;
     return this.http.post<APIResponse>(url, user).pipe(
       map(res => {
-        console.log("signup: " + JSON.stringify(res));
         return res.data;
       })
     );
@@ -61,9 +59,8 @@ export class UserService {
   }
 
   updateCurrentUser(user: User): Observable<User> {
-    console.log("updateCurrentUser: " + JSON.stringify(user));
     const PUT_USER_URL = `${rootUrl}/user`;
-    return this.http.put<APIResponse>(PUT_USER_URL,user).pipe(
+    return this.http.post<APIResponse>(PUT_USER_URL,user).pipe(
       map(res => {
         return res.data;
       })
