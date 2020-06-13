@@ -1,7 +1,10 @@
 <div class="page-container">
   <div class="main-content">
     <mat-card class="w-100">
-      <mat-card-title class="pb-3"><span class="fas fa-tools mr-2"></span>Settings</mat-card-title>
+      <mat-card-title class="pb-3">
+        <mat-icon class="fas fa-tools mr-2"></mat-icon>
+        Settings
+      </mat-card-title>
       <form (ngSubmit)="updateSettings()" fxLayout="column">
         <ng-container *ngIf="user">
           <mat-form-field>

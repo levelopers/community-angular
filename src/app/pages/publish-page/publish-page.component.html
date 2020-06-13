@@ -1,26 +1,69 @@
 <div class="page-container">
   <div class="main-content" fxLayout="column">
-    <mat-list>
-      <mat-list-item>
-        <h2><span class="far fa-comment-dots mr-2"></span>New Question</h2>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <input matInput class="form-control" required [(ngModel)]="postingQuestion.title" placeholder="Title"/>
-      </mat-list-item>
-      <mat-list-item>
-        <input matInput class="form-control" [(ngModel)]="postingQuestion.tag" placeholder="Tags"/>
-      </mat-list-item>
-      <mat-list-item>
-        <textarea class="form-control" rows="6" [(ngModel)]="postingQuestion.description"
-                  placeholder="Content"></textarea>
-      </mat-list-item>
-      <div class="m-2" fxLayoutAlign="end">
-        <button mat-button (click)="publishQuestion()" [disabled]="postQuestionStatus === RequestStatusEnum.LOADING" class="btn btn-success">Publish</button>
-      </div>
-      <mat-error *ngIf="postQuestionStatus === RequestStatusEnum.FAIL">
-        Posting question failed
-      </mat-error>
-    </mat-list>
+    <mat-card class="w-100">
+      <mat-card-title class="pb-3">
+        <mat-icon class="far fa-comment-dots mr-2"></mat-icon>
+        New Question
+      </mat-card-title>
+      <form (ngSubmit)="publishQuestion()" #publishForm="ngForm" fxLayout="column">
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input matInput
+                 class="form-control"
+                 type="text"
+                 required
+                 name="publish-title"
+                 [(ngModel)]="postingQuestion.title"
+                 placeholder="Whats your question..."/>
+          <mat-error>
+            Title is required.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tags</mat-label>
+          <input matInput
+                 class="form-control"
+                 required
+                 type="text"
+                 name="publish-tags"
+                 [(ngModel)]="postingQuestion.tag"
+                 placeholder="Tag your question with keywords here..."/>
+          <mat-error>
+            Tag is required.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Content</mat-label>
+          <textarea matInput
+                    class="form-control"
+                    required
+                    rows="6"
+                    type="text"
+                    name="publish-content"
+                    [(ngModel)]="postingQuestion.description"
+                    placeholder="Describe your question here..."></textarea>
+          <mat-error>
+            Content is required.
+          </mat-error>
+        </mat-form-field>
+        <div class="m-2 d-flex justify-content-end">
+          <button mat-raised-button
+                  type="submit"
+                  [disabled]="publishForm.invalid || postQuestionStatus === RequestStatusEnum.LOADING"
+                  color="primary">
+            Publish
+            <mat-icon *ngIf="postQuestionStatus === RequestStatusEnum.LOADING">
+              <mat-spinner color="accent" diameter="20"></mat-spinner>
+            </mat-icon>
+            <mat-icon *ngIf="postQuestionStatus === RequestStatusEnum.SUCCESS"
+                      class="fas fa-check"
+                      [ngStyle]="{'color':'green'}"></mat-icon>
+          </button>
+        </div>
+        <mat-error *ngIf="postQuestionStatus === RequestStatusEnum.FAIL">
+          Posting question failed
+        </mat-error>
+      </form>
+    </mat-card>
   </div>
 </div>

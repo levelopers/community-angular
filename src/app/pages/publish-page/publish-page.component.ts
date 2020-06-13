@@ -33,8 +33,10 @@ export class PublishPageComponent implements OnInit {
         return throwError(err);
       })).subscribe(res => {
       if (!!res) {
-        this.router.navigate(['/']);
         this.postQuestionStatus = RequestStatusEnum.SUCCESS;
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        },1500)
       }
     })
   }
