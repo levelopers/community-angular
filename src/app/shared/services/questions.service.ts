@@ -21,7 +21,6 @@ export class QuestionsService {
   getQuestions(): Observable<Question[]> {
     return this.http.get<APIResponse>(rootUrl + this.questionAPI).pipe(
       map((res: APIResponse) => {
-        console.log(JSON.stringify(res.data))
         return res.data;
       })
     )
@@ -47,7 +46,6 @@ export class QuestionsService {
   }
 
   public postQuestion(question: Question): Observable<Question> {
-    console.log("postQuestion: " + JSON.stringify(question));
     const postQuestionAPI = "/publish";
     return this.http.post<APIResponse>(rootUrl + postQuestionAPI, question).pipe(
       map((res: APIResponse) => {
