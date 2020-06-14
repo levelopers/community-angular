@@ -4,7 +4,7 @@
   </div>
   <div fxLayout="column" class="ml-2">
     <h4>{{comment.user.username}}</h4>
-    <span class="w-100">
+    <span class="w-100 pre-line">
       {{comment.content}}
     </span>
     <div fxLayout="row">
@@ -23,11 +23,11 @@
         <ng-container *ngFor="let subComment of subComments$ | async">
           <div fxLayout="row" class="m-2" (click)="$event.stopPropagation()">
             <div class="comment-user-img-container">
-              <img class="comment-user-img" src="{{comment.user.avatarUrl}}">
+              <img class="comment-user-img" src="{{subComment.user.avatarUrl}}">
             </div>
             <div fxLayout="column" class="ml-2">
               <h4>{{subComment.user.username}}</h4>
-              <span class="w-100">{{subComment.content}}</span>
+              <span class="w-100 pre-line">{{subComment.content}}</span>
             </div>
           </div>
           <mat-divider></mat-divider>
@@ -50,5 +50,4 @@
       </mat-menu>
     </div>
   </div>
-
 </div>
