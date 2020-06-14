@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
-import {delay, map} from "rxjs/operators";
-import {Observable, of, Subject} from "rxjs";
+import {map} from "rxjs/operators";
+import {Observable, Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {rootUrl} from "../../configs/api-config";
 import {APIResponse} from "../models/APIResponse";
 import {AuthService} from "./auth.service";
 import {User} from "../models/User";
-import {USER} from "../_fakeData";
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +27,6 @@ export class UserService {
         }
         return res;
       }),
-      // catchError(this.handleError('Login Failed', null))
     );
   }
 
@@ -44,27 +42,24 @@ export class UserService {
         return res.data;
       })
     );
-    // return of(USER).pipe(delay(2000));
   }
 
   getCurrentUser(): Observable<User> {
     const GET_USER_URL = `${rootUrl}/user`;
-   return this.http.get<APIResponse>(GET_USER_URL).pipe(
-     map(res => {
-       this.currentUserSubject.next(res.data);
-       return res.data;
-     })
-   )
-   //  return of(USER);
+    return this.http.get<APIResponse>(GET_USER_URL).pipe(
+      map(res => {
+        this.currentUserSubject.next(res.data);
+        return res.data;
+      })
+    )
   }
 
   updateCurrentUser(user: User): Observable<User> {
     const PUT_USER_URL = `${rootUrl}/user`;
-    return this.http.post<APIResponse>(PUT_USER_URL,user).pipe(
+    return this.http.post<APIResponse>(PUT_USER_URL, user).pipe(
       map(res => {
         return res.data;
       })
     )
-    // return of(USER);
   }
 }

@@ -35,13 +35,16 @@
         <mat-form-field>
           <mat-label>Content</mat-label>
           <textarea matInput
+                    #description
                     class="form-control"
                     required
                     rows="6"
                     type="text"
                     name="publish-content"
+                    maxlength="1024"
                     [(ngModel)]="postingQuestion.description"
                     placeholder="Describe your question here..."></textarea>
+          <mat-hint align="end">{{description.value.length}} / 1024</mat-hint>
           <mat-error>
             Content is required.
           </mat-error>

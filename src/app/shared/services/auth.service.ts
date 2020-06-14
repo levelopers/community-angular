@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private cookieService: CookieService) { }
 
   public getToken(): string {
-    return this.cookieService.get("token");
+    return this.cookieService.get('token');
   }
 
   public setToken(token: string): void {

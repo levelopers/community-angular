@@ -30,13 +30,25 @@
             <img class="question-profile-img" src="{{question.user.avatarUrl}}">
             <h4 class="mx-2">{{question.user.username}}</h4>
           </div>
-          <textarea [(ngModel)]="postingComment.content" class="form-control my-2" rows="6" id="comment-content"></textarea>
+          <mat-form-field>
+          <textarea matInput
+                    #content
+                    [(ngModel)]="postingComment.content"
+                    class="form-control my-2"
+                    type="text"
+                    rows="6"
+                    maxlength="1024"
+                    id="comment-content"
+                    placeholder="Type your comment here..."></textarea>
+            <mat-hint align="end">{{content.value.length}} / 1024</mat-hint>
+          </mat-form-field>
           <div fxFlexAlign="end" class="mb-3">
             <button mat-button
                     type="button"
                     class="btn btn-success btn-comment"
-                    [disabled]="postCommentStatus === RequestStatusEnum.LOADING"
-                    (click)="postComment()">Comment</button>
+                    [disabled]="!postingComment.content || postCommentStatus === RequestStatusEnum.LOADING"
+                    (click)="postComment()">Comment
+            </button>
           </div>
           <mat-error *ngIf="postCommentStatus === RequestStatusEnum.FAIL">
             Posting comment failed

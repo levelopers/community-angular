@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {CommentModel} from "../models/CommentModel";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {rootUrl} from "../../configs/api-config";
-import {delay, map} from "rxjs/operators";
+import {map} from "rxjs/operators";
 import {APIResponse} from "../models/APIResponse";
-import {COMMENTDTOS, COMMENTS} from "../_fakeData";
 import {CreateCommentModel} from "../models/CreateCommentModel";
 import {CommentDTOModel} from "../models/CommentDTOModel";
 
@@ -25,7 +24,6 @@ export class CommentService {
         return res?.data;
       })
     );
-    // return of(COMMENTS[0]).pipe(delay(1000));
   }
 
   public getSubComments(commentId: number): Observable<CommentDTOModel[]> {
@@ -34,7 +32,6 @@ export class CommentService {
         return res?.data;
       })
     )
-    // return of(COMMENTDTOS);
   }
 
   public incCommentLikeCount(commentId: number): Observable<any> {
