@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
 import {Observable, Subject} from "rxjs";
 
@@ -8,7 +8,9 @@ import {Observable, Subject} from "rxjs";
 export class AuthService {
   public tokenSuject: Subject<string> = new Subject<string>();
   public tokenObservable: Observable<string> = this.tokenSuject.asObservable();
-  constructor(private cookieService: CookieService) { }
+
+  constructor(private cookieService: CookieService) {
+  }
 
   public getToken(): string {
     return this.cookieService.get('token');

@@ -10,7 +10,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {LoginPageComponent} from "./pages/login-page/login-page.component";
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {ErrorInterceptor} from "./interceptors/error-interceptor.service";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {QuestionPageComponent} from "./pages/question-page/question-page.component";
 import {PublishPageComponent} from "./pages/publish-page/publish-page.component";
 import {SettingPageComponent} from "./pages/setting-page/setting-page.component";

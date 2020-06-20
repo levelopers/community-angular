@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuestionsService} from "../../shared/services/questions.service";
 import {Observable} from "rxjs";
 import {Question} from "../../shared/models/Question";
@@ -12,7 +12,8 @@ export class HomePageComponent implements OnInit {
 
   quesionts$: Observable<Question[]>;
 
-  constructor(private questionsService: QuestionsService) { }
+  constructor(private questionsService: QuestionsService) {
+  }
 
   ngOnInit(): void {
     this.quesionts$ = this.questionsService.getQuestions()

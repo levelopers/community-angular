@@ -14,7 +14,7 @@ import {throwError} from "rxjs";
 })
 export class SignupPageComponent implements OnInit {
   public signupForm: FormGroup;
-  public RequestStatusEnum: any = Object.assign({},RequestStatusEnum);
+  public RequestStatusEnum: any = Object.assign({}, RequestStatusEnum);
   public signupStatus: RequestStatusEnum;
 
   constructor(private formBuilder: FormBuilder,

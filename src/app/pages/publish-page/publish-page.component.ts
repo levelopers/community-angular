@@ -13,17 +13,18 @@ import {Router} from "@angular/router";
 })
 export class PublishPageComponent implements OnInit {
   public postingQuestion: Question = new Question();
-  public RequestStatusEnum: any = Object.assign({},RequestStatusEnum);
+  public RequestStatusEnum: any = Object.assign({}, RequestStatusEnum);
   public postQuestionStatus: RequestStatusEnum;
 
   constructor(private questionsService: QuestionsService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
   publishQuestion() {
-    if (!this.postingQuestion.title){
+    if (!this.postingQuestion.title) {
       alert("title required");
     }
     this.postQuestionStatus = RequestStatusEnum.LOADING;
@@ -36,7 +37,7 @@ export class PublishPageComponent implements OnInit {
         this.postQuestionStatus = RequestStatusEnum.SUCCESS;
         setTimeout(() => {
           this.router.navigate(['/']);
-        },1500)
+        }, 1500)
       }
     })
   }

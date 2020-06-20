@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {HeaderComponent} from "./components/header/header.component";
 import {HttpClientModule} from "@angular/common/http";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -10,7 +10,6 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {RouterModule} from "@angular/router";
-
 
 
 @NgModule({
@@ -33,4 +32,5 @@ import {RouterModule} from "@angular/router";
     HeaderComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

@@ -21,7 +21,7 @@ export class QuestionCommentComponent implements OnInit {
   public postSubCommentStatus: RequestStatusEnum;
   public subComments$: Observable<CommentDTOModel[]>;
   public postSubCommentBody: CreateCommentModel;
-  public RequestStatusEnum: any = Object.assign({},RequestStatusEnum);
+  public RequestStatusEnum: any = Object.assign({}, RequestStatusEnum);
 
   constructor(private commentService: CommentService) {
   }
@@ -37,7 +37,7 @@ export class QuestionCommentComponent implements OnInit {
       this.commentService.incCommentLikeCount(this.comment.id).subscribe(
         res => {
           if (!!res) {
-            this.comment.likeCount ++;
+            this.comment.likeCount++;
           }
         }
       );
@@ -45,7 +45,7 @@ export class QuestionCommentComponent implements OnInit {
       this.commentService.decCommentLikeCount(this.comment.id).subscribe(
         res => {
           if (!!res) {
-            this.comment.likeCount --;
+            this.comment.likeCount--;
           }
         }
       );
@@ -72,7 +72,7 @@ export class QuestionCommentComponent implements OnInit {
           this.isSubCommentCollapsed = true;
           this.postSubCommentBody.content = "";
           this.postSubCommentStatus = RequestStatusEnum.SUCCESS;
-          this.comment.commentCount ++;
+          this.comment.commentCount++;
           this.trigger.closeMenu();
           this.subComments$ = this.commentService.getSubComments(this.comment.id);
         }

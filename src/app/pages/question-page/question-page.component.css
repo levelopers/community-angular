@@ -1,14 +1,17 @@
 .question-description {
   min-height: 100px;
 }
+
 .question-profile-img {
   width: 50px;
   height: 50px;
   border-radius: 20%;
 }
-.question-user-username{
+
+.question-user-username {
   font-size: .8rem;
 }
-.question-info{
+
+.question-info {
   font-size: .9rem;
 }

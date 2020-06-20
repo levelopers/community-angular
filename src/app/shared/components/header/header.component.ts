@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-   public currentUser: Observable<User>;
+  public currentUser: Observable<User>;
 
   constructor(private userService: UserService,
               private authService: AuthService,

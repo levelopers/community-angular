@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Question} from "../../shared/models/Question";
 import {QuestionsService} from "../../shared/services/questions.service";
@@ -10,7 +10,9 @@ import {QuestionsService} from "../../shared/services/questions.service";
 })
 export class ProfilePageComponent implements OnInit {
   public postedQuestions$: Observable<Question[]>;
-  constructor(private questionsService: QuestionsService) { }
+
+  constructor(private questionsService: QuestionsService) {
+  }
 
   ngOnInit(): void {
     this.postedQuestions$ = this.questionsService.getCurrentUserQuestions();

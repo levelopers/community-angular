@@ -13,14 +13,15 @@ import {throwError} from "rxjs";
 })
 export class LoginPageComponent implements OnInit {
   public loginForm: FormGroup;
-  public RequestStatusEnum: any = Object.assign({},RequestStatusEnum);
+  public RequestStatusEnum: any = Object.assign({}, RequestStatusEnum);
   public loginStatus: RequestStatusEnum;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -30,7 +31,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.loginForm.valid) {
+    if (this.loginForm.valid) {
       this.loginStatus = RequestStatusEnum.LOADING;
       this.userService.login(this.loginForm.value)
         .pipe(catchError(err => {

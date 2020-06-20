@@ -8,7 +8,8 @@
       <button mat-button routerLink="/">Community</button>
       <span class="menu-spacer"></span>
       <div fxShow="true" fxHide.lt-sm>
-        <button routerLink="/publish" mat-raised-button class="mx-1"><span class="far fa-edit"></span>New Question</button>
+        <button routerLink="/publish" mat-raised-button class="mx-1"><span class="far fa-edit"></span>New Question
+        </button>
         <ng-container *ngIf="currentUser | async as user; else loginButtonTemplate">
           <button mat-button class="mx-1" [matMenuTriggerFor]="menu">
           <span class="fas fa-user">
@@ -18,7 +19,8 @@
           </button>
         </ng-container>
         <ng-template #loginButtonTemplate>
-          <button routerLink="/login" mat-raised-button class="mx-1"><span class="fas fa-sign-in-alt"></span>Login</button>
+          <button routerLink="/login" mat-raised-button class="mx-1"><span class="fas fa-sign-in-alt"></span>Login
+          </button>
         </ng-template>
         <mat-menu #menu="matMenu">
           <button routerLink="/setting" mat-menu-item><span class="fas fa-cog mx-1"></span>Settings</button>
