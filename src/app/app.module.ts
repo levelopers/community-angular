@@ -16,6 +16,7 @@ import {PublishPageComponent} from "./pages/publish-page/publish-page.component"
 import {SettingPageComponent} from "./pages/setting-page/setting-page.component";
 import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
 import {SignupPageComponent} from "./pages/signup-page/signup-page.component";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent},
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     SharedModule,
     PagesModule,
     RouterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [
     [{

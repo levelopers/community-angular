@@ -1,28 +1,37 @@
 import {Injectable} from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
 import {Observable, Subject} from "rxjs";
+import {AuthModel} from "../models/AuthModel";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public tokenSuject: Subject<string> = new Subject<string>();
-  public tokenObservable: Observable<string> = this.tokenSuject.asObservable();
+  public authSuject: Subject<AuthModel> = new Subject<AuthModel>();
+  public authObservable: Observable<AuthModel> = this.authSuject.asObservable();
 
   constructor(private cookieService: CookieService) {
   }
 
-  public getToken(): string {
-    return this.cookieService.get('token');
+  public getAuth(): AuthModel {
+    const token = this.cookieService.get('token');
+    const username = this.cookieService.get('username');
+    return {token, username}
   }
 
-  public setToken(token: string): void {
-    this.cookieService.set('token', token);
-    this.tokenSuject.next(token);
+  public setAuth(auth: AuthModel): void {
+    this.cookieService.set('token', auth.token);
+    this.cookieService.set('username', auth.username);
+    this.authSuject.next(auth);
   }
 
-  public removeToken(): void {
+  public removeAuth(): void {
     this.cookieService.delete('token');
-    this.tokenSuject.next(null);
+    this.cookieService.delete('username');
+    this.authSuject.next(null);
+  }
+
+  public hasAuth(): boolean {
+    return !!this.getAuth().token;
   }
 }

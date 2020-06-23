@@ -18,7 +18,6 @@ export class CommentService {
   }
 
   public postComment(comment: CreateCommentModel): Observable<CommentModel> {
-    console.log(`postComment: ${JSON.stringify(comment)}`);
     return this.http.post<APIResponse>(rootUrl + this.commentAPI, comment).pipe(
       map((res: APIResponse) => {
         return res?.data;

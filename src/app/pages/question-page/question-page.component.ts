@@ -8,6 +8,7 @@ import {CreateCommentModel} from "../../shared/models/CreateCommentModel";
 import {CommentDTOModel} from "../../shared/models/CommentDTOModel";
 import {RequestStatusEnum} from "../../shared/models/RequestStatus.enum";
 import {catchError} from "rxjs/operators";
+import {NotificationService} from "../../shared/services/notification.service";
 
 @Component({
   selector: 'app-question-page',
@@ -24,6 +25,7 @@ export class QuestionPageComponent implements OnInit {
 
   constructor(private questionsService: QuestionsService,
               private commentService: CommentService,
+              private notificationService: NotificationService,
               private route: ActivatedRoute) {
   }
 
@@ -41,7 +43,8 @@ export class QuestionPageComponent implements OnInit {
         this.postCommentStatus = RequestStatusEnum.FAIL;
         return throwError(err);
       })).subscribe(res => {
-        if (res) {
+        if (!!res) {
+          this.notificationService.makeComment(this.questionId).subscribe();
           this.postingComment.content = '';
           this.postCommentStatus = RequestStatusEnum.SUCCESS;
           this.questionComments$ = this.questionsService.getCommentsByQuestionId(this.questionId);

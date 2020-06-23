@@ -22,8 +22,11 @@ export class UserService {
     const loginUrl = `${rootUrl}/users/login`;
     return this.http.post<APIResponse>(loginUrl, loginForm).pipe(
       map(res => {
-        if (res && res.data && res.data.token) {
-          this.authService.setToken(res.data.token);
+        if (!!res && !!res.data && !!res.data.token) {
+          this.authService.setAuth({
+            username: res.data.username,
+            token: res.data.token
+          });
         }
         return res;
       }),
@@ -31,7 +34,7 @@ export class UserService {
   }
 
   logout() {
-    this.authService.removeToken();
+    this.authService.removeAuth();
     this.currentUserSubject.next(null);
   }
 
