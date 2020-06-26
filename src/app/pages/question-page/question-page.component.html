@@ -28,9 +28,9 @@
       <mat-divider></mat-divider>
       <mat-list-item>
         <div fxLayout="column" class="w-100">
-          <div fxLayout="row">
-            <img class="question-profile-img" src="{{question.user.avatarUrl}}">
-            <h4 class="mx-2">{{question.user.username}}</h4>
+          <div fxLayout="row" *ngIf="!!currentUser">
+            <img class="question-profile-img" src="{{currentUser.avatarUrl}}">
+            <h4 class="mx-2">{{currentUser.username}}</h4>
           </div>
           <mat-form-field>
           <textarea matInput

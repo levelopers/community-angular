@@ -11,6 +11,7 @@ import {User} from "../models/User";
   providedIn: 'root'
 })
 export class UserService {
+  public currentUser: User;
   public currentUserSubject: Subject<User> = new Subject<User>();
   public currentUserObservable: Observable<User> = this.currentUserSubject.asObservable();
 
@@ -36,6 +37,7 @@ export class UserService {
   logout() {
     this.authService.removeAuth();
     this.currentUserSubject.next(null);
+    this.currentUser = null;
   }
 
   signUp(user: User): Observable<User> {
@@ -52,6 +54,7 @@ export class UserService {
     return this.http.get<APIResponse>(GET_USER_URL).pipe(
       map(res => {
         this.currentUserSubject.next(res.data);
+        this.currentUser = res.data;
         return res.data;
       })
     )

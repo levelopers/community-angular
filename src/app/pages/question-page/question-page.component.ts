@@ -9,6 +9,8 @@ import {CommentDTOModel} from "../../shared/models/CommentDTOModel";
 import {RequestStatusEnum} from "../../shared/models/RequestStatus.enum";
 import {catchError} from "rxjs/operators";
 import {NotificationService} from "../../shared/services/notification.service";
+import {UserService} from "../../shared/services/user.service";
+import {User} from "../../shared/models/User";
 
 @Component({
   selector: 'app-question-page',
@@ -21,11 +23,13 @@ export class QuestionPageComponent implements OnInit {
   public questionComments$: Observable<CommentDTOModel[]>;
   public RequestStatusEnum: any = Object.assign({}, RequestStatusEnum);
   public postCommentStatus: RequestStatusEnum;
+  public currentUser: User;
   private questionId: number;
 
   constructor(private questionsService: QuestionsService,
               private commentService: CommentService,
               private notificationService: NotificationService,
+              private userService: UserService,
               private route: ActivatedRoute) {
   }
 
@@ -34,6 +38,7 @@ export class QuestionPageComponent implements OnInit {
     this.question$ = this.questionsService.getQuestionByQuestionId(this.questionId);
     this.questionComments$ = this.questionsService.getCommentsByQuestionId(this.questionId);
     this.postingComment = new CreateCommentModel(this.questionId, 1);
+    this.currentUser = this.userService.currentUser;
   }
 
   public postComment() {
