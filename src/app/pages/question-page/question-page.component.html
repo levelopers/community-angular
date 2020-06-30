@@ -3,11 +3,12 @@
     <mat-list *ngIf="( question$ | async ) as question">
       <mat-list-item>
         <div class="flex-column">
+<!--        TODO  length 200 limit wrap-->
           <h2>
             {{question.title}}
           </h2>
           <span class="question-info">
-            author: {{question.user.username}} |
+            author: {{question.creator.username}} |
             date created: {{question.gmtCreate | date}} |
             view count: {{question.viewCount}}
           </span>
@@ -15,6 +16,7 @@
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
+<!--        TODO length 1024 limit wrap-->
         <div class="question-description pre-line"
              fxLayout="row"
              fxLayoutAlign="center center">

@@ -1,10 +1,9 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {CommentDTOModel} from "../../../../shared/models/CommentDTOModel";
+import {CommentModel} from "../../../../shared/models/CommentModel";
 import {MatMenuTrigger} from "@angular/material/menu";
 import {CommentService} from "../../../../shared/services/comment.service";
 import {Observable, throwError} from "rxjs";
 import {CreateCommentModel} from "../../../../shared/models/CreateCommentModel";
-import {CommentModel} from "../../../../shared/models/CommentModel";
 import {RequestStatusEnum} from "../../../../shared/models/RequestStatus.enum";
 import {catchError} from "rxjs/operators";
 
@@ -14,12 +13,12 @@ import {catchError} from "rxjs/operators";
   styleUrls: ['./question-comment.component.css']
 })
 export class QuestionCommentComponent implements OnInit {
-  @Input() comment: CommentDTOModel;
+  @Input() comment: CommentModel;
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   public isLiked: boolean;
   public isSubCommentCollapsed: boolean;
   public postSubCommentStatus: RequestStatusEnum;
-  public subComments$: Observable<CommentDTOModel[]>;
+  public subComments$: Observable<CommentModel[]>;
   public postSubCommentBody: CreateCommentModel;
   public RequestStatusEnum: any = Object.assign({}, RequestStatusEnum);
 

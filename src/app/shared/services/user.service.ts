@@ -5,21 +5,21 @@ import {HttpClient} from "@angular/common/http";
 import {rootUrl} from "../../configs/api-config";
 import {APIResponse} from "../models/APIResponse";
 import {AuthService} from "./auth.service";
-import {User} from "../models/User";
+import {UserModel} from "../models/UserModel";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  public currentUser: User;
-  public currentUserSubject: Subject<User> = new Subject<User>();
-  public currentUserObservable: Observable<User> = this.currentUserSubject.asObservable();
+  public currentUser: UserModel;
+  public currentUserSubject: Subject<UserModel> = new Subject<UserModel>();
+  public currentUserObservable: Observable<UserModel> = this.currentUserSubject.asObservable();
 
   constructor(private http: HttpClient,
               private authService: AuthService) {
   }
 
-  login(loginForm): Observable<APIResponse> {
+  login(loginForm: UserModel): Observable<APIResponse> {
     const loginUrl = `${rootUrl}/users/login`;
     return this.http.post<APIResponse>(loginUrl, loginForm).pipe(
       map(res => {
@@ -40,7 +40,7 @@ export class UserService {
     this.currentUser = null;
   }
 
-  signUp(user: User): Observable<User> {
+  signUp(user: UserModel): Observable<UserModel> {
     const url = `${rootUrl}/users/signup`;
     return this.http.post<APIResponse>(url, user).pipe(
       map(res => {
@@ -49,7 +49,7 @@ export class UserService {
     );
   }
 
-  getCurrentUser(): Observable<User> {
+  getCurrentUser(): Observable<UserModel> {
     const GET_USER_URL = `${rootUrl}/user`;
     return this.http.get<APIResponse>(GET_USER_URL).pipe(
       map(res => {
@@ -60,7 +60,7 @@ export class UserService {
     )
   }
 
-  updateCurrentUser(user: User): Observable<User> {
+  updateCurrentUser(user: UserModel): Observable<UserModel> {
     const PUT_USER_URL = `${rootUrl}/user`;
     return this.http.post<APIResponse>(PUT_USER_URL, user).pipe(
       map(res => {

@@ -5,12 +5,12 @@ import {Question} from "../../shared/models/Question";
 import {ActivatedRoute} from "@angular/router";
 import {CommentService} from "../../shared/services/comment.service";
 import {CreateCommentModel} from "../../shared/models/CreateCommentModel";
-import {CommentDTOModel} from "../../shared/models/CommentDTOModel";
+import {CommentModel} from "../../shared/models/CommentModel";
 import {RequestStatusEnum} from "../../shared/models/RequestStatus.enum";
 import {catchError} from "rxjs/operators";
 import {NotificationService} from "../../shared/services/notification.service";
 import {UserService} from "../../shared/services/user.service";
-import {User} from "../../shared/models/User";
+import {UserModel} from "../../shared/models/UserModel";
 
 @Component({
   selector: 'app-question-page',
@@ -20,10 +20,10 @@ import {User} from "../../shared/models/User";
 export class QuestionPageComponent implements OnInit {
   public question$: Observable<Question>;
   public postingComment: CreateCommentModel;
-  public questionComments$: Observable<CommentDTOModel[]>;
+  public questionComments$: Observable<CommentModel[]>;
   public RequestStatusEnum: any = Object.assign({}, RequestStatusEnum);
   public postCommentStatus: RequestStatusEnum;
-  public currentUser: User;
+  public currentUser: UserModel;
   private questionId: number;
 
   constructor(private questionsService: QuestionsService,

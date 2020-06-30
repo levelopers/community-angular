@@ -6,7 +6,7 @@ import {map} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
 import '../../../assets/socketjs.min'
 import '../../../assets/stomp.min'
-import {Notification} from "../models/Notification";
+import {NotificationModel} from "../models/NotificationModel";
 
 declare var Stomp;
 declare var SockJS;
@@ -15,8 +15,8 @@ declare var SockJS;
   providedIn: 'root'
 })
 export class NotificationService {
-  public notificationsSubject: Subject<Notification[]> = new Subject<Notification[]>();
-  public notificationsObservable: Observable<Notification[]> = this.notificationsSubject.asObservable();
+  public notificationsSubject: Subject<NotificationModel[]> = new Subject<NotificationModel[]>();
+  public notificationsObservable: Observable<NotificationModel[]> = this.notificationsSubject.asObservable();
 
   constructor(private http: HttpClient) {
   }
@@ -29,7 +29,7 @@ export class NotificationService {
   }
 
   public makeComment(questionId: number): Observable<any> {
-    const makeCommentUrl = rootUrl + "/makeComment" + '/' + questionId;
+    const makeCommentUrl = rootUrl + "/ws" + "/makeComment" + '/' + questionId;
     return this.http.post<APIResponse>(makeCommentUrl, null).pipe(
       map((res: APIResponse) => {
         return res?.data;
@@ -37,7 +37,7 @@ export class NotificationService {
     );
   }
 
-  public getNotifications(): Observable<Notification[]> {
+  public getNotifications(): Observable<NotificationModel[]> {
     const GET_NOTIFICATIONS_URL = rootUrl + "/notifications";
     return this.http.get(GET_NOTIFICATIONS_URL).pipe(
       map((res: APIResponse) => {
@@ -47,7 +47,7 @@ export class NotificationService {
     )
   }
 
-  public readNotification(id: number) {
+  public readNotification(id: number): Observable<any> {
     const POST_READ_NOTIFICATIONS_URL = rootUrl + "/notifications/" + id + "/read";
     return this.http.post(POST_READ_NOTIFICATIONS_URL, null).pipe(
       map((res: APIResponse) => {

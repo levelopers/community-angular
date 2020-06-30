@@ -11,16 +11,16 @@
         <button routerLink="/publish" mat-raised-button class="mx-1"><span class="far fa-edit"></span>New Question
         </button>
         <ng-container *ngIf="currentUser | async as user; else loginButtonTemplate">
-            <button mat-button
-                    class="mx-1"
-                    (click)="getNotifications()"
-                    [matMenuTriggerFor]="notificationMenu"
-                    [matMenuTriggerData]="{notifications$: notifications$}">
+          <button mat-button
+                  class="mx-1"
+                  (click)="getNotifications()"
+                  [matMenuTriggerFor]="notificationMenu"
+                  [matMenuTriggerData]="{notifications$: notifications$}">
               <span class="fas fa-envelope-open-text">
             <span class="mx-1">Notifications</span>
             <i class="fas fa-caret-down"></i>
           </span>
-            </button>
+          </button>
           <button mat-button class="mx-1" [matMenuTriggerFor]="userMenu">
           <span class="fas fa-user">
             <span class="mx-1">{{user.username || ""}}</span>
@@ -34,13 +34,23 @@
         </ng-template>
         <mat-menu #notificationMenu="matMenu" xPosition="before" class="header-notification">
           <ng-template matMenuContent let-notifications$="notifications$">
-            <ng-container *ngFor="let notification of notifications$ | async">
-              <div mat-menu-item
-                   [ngClass]="!notification.isRead && 'bg-active' "
-                   (click)="notificationRedirect(notification)">
-                {{notification.message}}
-              </div>
+            <ng-container *ngIf="(notifications$ | async ) as notifications; else noNotificationBlock">
+              <ng-container *ngIf="notifications.length>0; else noNotificationBlock">
+                <ng-container *ngFor="let notification of notifications">
+                  <div mat-menu-item
+                       [ngClass]="!notification.isRead && 'bg-active' "
+                       (click)="notificationRedirect(notification)">
+                    {{notification.message}}
+                  </div>
+                </ng-container>
+              </ng-container>
             </ng-container>
+            <ng-template #noNotificationBlock>
+              <div mat-menu-item style="font-size: 1rem; margin-top: 1rem">
+                <mat-icon class="fas fa-crow"></mat-icon>
+                empty notifications...
+              </div>
+            </ng-template>
           </ng-template>
         </mat-menu>
         <mat-menu #userMenu="matMenu">

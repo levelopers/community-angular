@@ -11,21 +11,23 @@
             <div class="card my-3">
               <div class="card-header question-header">
                 <a class="question-user">
-                  <img [src]="question.user.avatarUrl" class="question-user-img"/>
+                  <img [src]="question.creator.avatarUrl" class="question-user-img"/>
                 </a>
                 <div class="d-flex flex-column ml-2">
                   <a class="comment-author text-primary">
-                    {{ question.user.username }}
+                    {{ question.creator.username }}
                   </a>
                   <span class="date-posted">{{ question.gmtCreate | date }}</span>
                 </div>
               </div>
               <div class="card-body">
                 <h3 class="card-text">
+<!--                  TODO 200 length ellipse-->
                   <a routerLink="/questions/{{question.id}}" class="pre-line">
                     {{question.title}}
                   </a>
                 </h3>
+<!--                TODO length 1024 ellipse-->
                 <span class="card-text home-description pre-line">
                     {{ question.description }}
                   </span>

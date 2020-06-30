@@ -6,7 +6,7 @@
       <ng-container *ngFor="let question of postedQuestions$ | async">
         <mat-list-item *ngIf="!!question" class="pb-3">
           <div class="profile-question-user-img-container">
-            <img class="profile-question-user-img" src="{{question.user.avatarUrl}}">
+            <img class="profile-question-user-img" src="{{question.creator.avatarUrl}}">
           </div>
           <div fxLayout="column" class="ml-2">
             <a routerLink="/questions/{{question.id}}" class="mb-3">{{question.title}}</a>

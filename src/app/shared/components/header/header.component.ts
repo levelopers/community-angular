@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
-import {User} from "../../models/User";
+import {UserModel} from "../../models/UserModel";
 import {Observable} from "rxjs";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {NotificationService} from "../../services/notification.service";
-import {Notification} from "../../models/Notification";
+import {NotificationModel} from "../../models/NotificationModel";
 import {map} from "rxjs/operators";
 
 @Component({
@@ -14,8 +14,8 @@ import {map} from "rxjs/operators";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  public currentUser: Observable<User>;
-  public notifications$: Observable<Notification[]>;
+  public currentUser: Observable<UserModel>;
+  public notifications$: Observable<NotificationModel[]>;
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
       this.userService.getCurrentUser().subscribe();
       this.notificationService.getNotifications().subscribe();
     }
-    this.currentUser = this.userService.currentUserObservable.pipe(map((user: User) => {
+    this.currentUser = this.userService.currentUserObservable.pipe(map((user: UserModel) => {
       if (!!user) {
         this.notificationService.getNotifications().subscribe();
       }
@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
     this.notificationService.getNotifications().subscribe();
   }
 
-  notificationRedirect(notification: Notification) {
+  notificationRedirect(notification: NotificationModel) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };

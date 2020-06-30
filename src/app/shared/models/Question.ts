@@ -1,4 +1,4 @@
-import {User} from "./User";
+import {UserModel} from "./UserModel";
 
 export class Question {
   id: number;
@@ -6,10 +6,10 @@ export class Question {
   description: string;
   tag: string;
   commentCount: number;
-  creator: number;
+  creatorId: number;
   gmtCreate: number;
   gmtModified: number;
   likeCount: number;
   viewCount: number;
-  user: User;
+  creator: UserModel;
 }

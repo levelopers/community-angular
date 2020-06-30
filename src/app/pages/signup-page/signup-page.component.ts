@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../shared/models/User";
+import {UserModel} from "../../shared/models/UserModel";
 import {UserService} from "../../shared/services/user.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {RequestStatusEnum} from "../../shared/models/RequestStatus.enum";

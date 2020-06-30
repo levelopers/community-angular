@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {Question} from "../models/Question";
 import {map} from "rxjs/operators";
 import {APIResponse} from "../models/APIResponse";
-import {CommentDTOModel} from "../models/CommentDTOModel";
+import {CommentModel} from "../models/CommentModel";
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class QuestionsService {
     )
   }
 
-  public getCommentsByQuestionId(id: number): Observable<CommentDTOModel[]> {
+  public getCommentsByQuestionId(id: number): Observable<CommentModel[]> {
     return this.http.get<APIResponse>(rootUrl + this.questionAPI + '/' + id + '/' + 'comments').pipe(
       map((res: APIResponse) => {
         return res?.data;

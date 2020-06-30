@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../shared/models/User";
+import {UserModel} from "../../shared/models/UserModel";
 import {RequestStatusEnum} from "../../shared/models/RequestStatus.enum";
 import {UserService} from "../../shared/services/user.service";
 import {catchError} from "rxjs/operators";
@@ -13,10 +13,10 @@ import {compareObjects} from "../../shared/utils/compareObjects";
   styleUrls: ['./setting-page.component.css']
 })
 export class SettingPageComponent implements OnInit {
-  public user: User;
+  public user: UserModel;
   public RequestStatusEnum: any = Object.assign({}, RequestStatusEnum);
   public updateSettingsStatus: RequestStatusEnum;
-  private originalUser: User = new User();
+  private originalUser: UserModel = new UserModel();
 
   constructor(private userService: UserService,
               private router: Router) {
