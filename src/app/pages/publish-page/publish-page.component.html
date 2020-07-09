@@ -8,14 +8,16 @@
       <form (ngSubmit)="publishQuestion()" #publishForm="ngForm" fxLayout="column">
         <mat-form-field>
           <mat-label>Title</mat-label>
-<!--          TODO 200 chara limit-->
           <input matInput
+                 #title
                  class="form-control"
                  type="text"
                  required
                  name="publish-title"
+                 maxlength="200"
                  [(ngModel)]="postingQuestion.title"
                  placeholder="Whats your question..."/>
+          <mat-hint align="end">{{title.value.length}} / 200</mat-hint>
           <mat-error>
             Title is required.
           </mat-error>
@@ -23,12 +25,15 @@
         <mat-form-field>
           <mat-label>Tags</mat-label>
           <input matInput
+                 #tag
                  class="form-control"
                  required
                  type="text"
                  name="publish-tags"
+                 maxlength="256"
                  [(ngModel)]="postingQuestion.tag"
                  placeholder="Tag your question with keywords here..."/>
+          <mat-hint align="end">{{tag.value.length}} / 256</mat-hint>
           <mat-error>
             Tag is required.
           </mat-error>

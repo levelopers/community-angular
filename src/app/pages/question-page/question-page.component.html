@@ -1,9 +1,8 @@
 <div class="page-container">
   <div class="main-content">
-    <mat-list *ngIf="( question$ | async ) as question">
+    <mat-list *ngIf="( question$ | async ) as question" class="break-word">
       <mat-list-item>
         <div class="flex-column">
-<!--        TODO  length 200 limit wrap-->
           <h2>
             {{question.title}}
           </h2>
@@ -16,7 +15,6 @@
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-<!--        TODO length 1024 limit wrap-->
         <div class="question-description pre-line"
              fxLayout="row"
              fxLayoutAlign="center center">

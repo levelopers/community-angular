@@ -14,6 +14,7 @@ body
 
 .page-container
   min-width: calc(100vw - 17px)
+  max-width: 100%
   min-height: 100vh
   background: #efefef
   position: absolute
@@ -39,10 +40,14 @@ body
 .pre-line
   white-space: pre-line
 
+.break-word
+  word-break: break-word
+
 .cdk-overlay-container
   .cdk-overlay-pane
     .mat-menu-panel.question-comment-subcomment
       min-width: 500px
+      max-width: 80vw
 
       .mat-menu-content
         display: flex

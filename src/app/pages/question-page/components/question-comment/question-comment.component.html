@@ -4,7 +4,6 @@
   </div>
   <div fxLayout="column" class="ml-2">
     <h4>{{comment.commentator.username}}</h4>
-    <!--        TODO length 1024 limit wrap-->
     <span class="w-100 pre-line">
       {{comment.content}}
     </span>
@@ -26,16 +25,26 @@
             <div class="comment-user-img-container">
               <img class="comment-user-img" src="{{subComment.commentator.avatarUrl}}">
             </div>
-            <div fxLayout="column" class="ml-2">
+            <div fxLayout="column" class="ml-2 break-word">
               <h4>{{subComment.commentator.username}}</h4>
-              <!--        TODO length 1024 limit wrap-->
               <span class="w-100 pre-line">{{subComment.content}}</span>
             </div>
           </div>
           <mat-divider></mat-divider>
         </ng-container>
         <div (click)="$event.stopPropagation()" class="m-2">
-          <textarea [(ngModel)]="postSubCommentBody.content" rows="2" class="form-control"></textarea>
+          <mat-form-field class="w-100">
+          <textarea matInput
+                    #subCommentContent
+                    [(ngModel)]="postSubCommentBody.content"
+                    class="form-control my-2"
+                    type="text"
+                    rows="3"
+                    maxlength="1024"
+                    id="subComment-content"
+                    placeholder="Type your comment here..."></textarea>
+            <mat-hint align="end">{{subCommentContent.value.length}} / 1024</mat-hint>
+          </mat-form-field>
           <div class="ml-auto my-2" fxLayoutAlign="end">
             <button (click)="replyComment()"
                     [disabled]="postSubCommentStatus === RequestStatusEnum.LOADING"
