@@ -15,6 +15,10 @@ front-end: Angular 9, Angular Material, Boostrap, rxjs
 
 back-end: Springboot, Spring Security, mybatis, mybatis-generator, flywaydb, google-cloud-storage, jsonwebtoken, lombok, fastjson,  springfox-swagger2
 
+## updated
+
+* websockt realtime notification service
+
 ## snapshots
 
 
